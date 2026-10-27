@@ -9,9 +9,13 @@ const MapDefaultCamera = ({ filteredPositions }) => {
   const selectedDeviceId = useSelector((state) => state.devices.selectedId);
   const positions = useSelector((state) => state.session.positions);
 
-  const defaultLatitude = usePreference('latitude', -34.68);
-  const defaultLongitude = usePreference('longitude', -58.56);
-  const defaultZoom = usePreference('zoom', 10);
+  const latitudePreference = usePreference('latitude', 0);
+  const longitudePreference = usePreference('longitude', 0);
+  const zoomPreference = usePreference('zoom', 0);
+
+  const defaultLatitude = latitudePreference !== 0 ? latitudePreference : -34.68;
+  const defaultLongitude = longitudePreference !== 0 ? longitudePreference : -58.56;
+  const defaultZoom = zoomPreference > 0 ? zoomPreference : 10;
 
   const [initialized, setInitialized] = useState(false);
 
