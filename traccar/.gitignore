@@ -12,3 +12,6 @@ out
 build
 .vscode
 bin
+
+# Configuración local (JDK, flags de JVM, etc.)
+gradle.properties
